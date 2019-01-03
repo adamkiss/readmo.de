@@ -1,0 +1,46 @@
+{
+  "name": "readmo.de",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "hyperapp": "~1.2.9"
+  },
+  "devDependencies": {
+    "eslint-config-xo-preact": "~1.0.0",
+    "hyperapp-scripts": "~0.2.1",
+    "xo": "~0.23.0"
+  },
+  "scripts": {
+    "start": "hyperapp-scripts start",
+    "build": "hyperapp-scripts build",
+    "test": "hyperapp-scripts test",
+    "xo": "xo"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "xo": {
+    "semicolon": false,
+    "extends": "xo-preact",
+    "rules": {
+      "generator-star-spacing": 0,
+      "capitalized-comments": 0,
+      "require-yield": 0,
+      "func-names": 0,
+      "operator-linebreak": 0,
+      "curly": [
+        "error",
+        "multi",
+        "consistent"
+      ],
+      "jsx-quotes": [
+        "error",
+        "prefer-single"
+      ],
+      "react/jsx-extension": 0
+    }
+  }
+}
