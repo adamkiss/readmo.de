@@ -26,6 +26,11 @@
     "semicolon": false,
     "extends": "xo-preact",
     "rules": {
+      "import/no-unassigned-import": ["error", {
+        "allow": [
+            "**/*.css", "hyperapp"
+          ]}
+      ],
       "generator-star-spacing": 0,
       "capitalized-comments": 0,
       "require-yield": 0,
@@ -40,7 +45,10 @@
         "error",
         "prefer-single"
       ],
-      "react/jsx-extension": 0
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      "react/jsx-closing-bracket-location": [
+        1, "tag-aligned"
+      ]
     }
   }
 }

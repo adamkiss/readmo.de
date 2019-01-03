@@ -1,6 +1,8 @@
-import { h, app } from "hyperapp";
-import App from "./App";
+/* global document, it */
 
-it("renders without crashing", () => {
-  app({}, {}, () => <App />, document.body);
-});
+import {h, app} from 'hyperapp'
+import App from './app'
+
+it('renders without crashing', () => {
+	app({}, {}, () => <App/>, document.body)
+})

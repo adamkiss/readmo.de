@@ -8,4 +8,4 @@ const state = {}
 
 const actions = {}
 
-app(state, actions, () => <App />, document.body)
+app(state, actions, () => <App/>, document.body)

@@ -1,6 +1,6 @@
-import { h } from 'hyperapp'
+import {h} from 'hyperapp'
 import logo from './logo.svg'
-import './App.css'
+import './app.css'
 
 const App = () => (
 	<div className='App'>
