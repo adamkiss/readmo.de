@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "got": "~9.5.0",
     "hyperapp": "~1.2.9",
     "query-string": "~6.2.0"
   },
@@ -27,6 +28,7 @@
     "semicolon": false,
     "extends": "xo-preact",
     "rules": {
+      "import/order": 0,
       "import/no-unassigned-import": [
         "error",
         {
@@ -50,6 +52,7 @@
         "error",
         "prefer-single"
       ],
+      "react/jsx-no-bind": [1, {"allowArrowFunctions": true}],
       "react/jsx-filename-extension": [
         1,
         {

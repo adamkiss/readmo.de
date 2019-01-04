@@ -1,11 +1,8 @@
-/* global document */
+/* global document, window */
 
 import {h, app} from 'hyperapp'
+
 import './index.css'
-import App from './app'
+import {state, actions, view} from './app'
 
-const state = {}
-
-const actions = {}
-
-app(state, actions, () => <App/>, document.body)
+window.app = app(state, actions, view, document.body)

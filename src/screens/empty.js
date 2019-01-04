@@ -3,7 +3,7 @@ import logo from '../logo.svg'
 import './empty.css'
 
 const EmptyScreen = () => (
-	<div className='App'>
+	<div className='welcome'>
 		<header className='App-header'>
 			<img src={logo} className='App-logo' alt='logo'/>
 			<p>
