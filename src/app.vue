@@ -1,17 +1,24 @@
 <template>
 	<div id="app">
-		<img alt="Vue logo" src="./assets/logo.png">
-		<HelloWorld msg="Welcome to Your Vue.js App"/>
+		<Welcome v-if="page === null" v-bind:loading="loading"/>
+		<Loader v-if="loading"/>
+		<Reader v-if="page !== null" v-bind:loading="loading"/>
 	</div>
 </template>
 
 <script>
-import HelloWorld from './components/hello-world.vue'
+import Welcome from './screens/welcome.vue'
+import Loader from './screens/loader.vue'
+import Reader from './screens/reader.vue'
 
 export default {
 	name: 'app',
+	data: () => ({
+		loading: true,
+		page: null
+	}),
 	components: {
-		HelloWorld
+		Welcome, Loader, Reader
 	}
 }
 </script>
@@ -24,5 +31,14 @@ export default {
 	text-align: center;
 	color: #2c3e50;
 	margin-top: 60px;
+}
+
+.debug {
+	width: 100px;
+	height: 100px;
+}
+
+.is-loading {
+	filter: blur(5px);
 }
 </style>
