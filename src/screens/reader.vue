@@ -16,6 +16,8 @@ export default {
 .reader {
 	background: black;
 	color: white;
+
+	transition: filter .1s linear .5s;
 }
 
 [loading=true] {

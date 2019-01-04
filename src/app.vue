@@ -1,8 +1,8 @@
 <template>
 	<div id="app">
-		<Welcome v-if="page === null" v-bind:loading="loading"/>
-		<Loader v-if="loading"/>
-		<Reader v-if="page !== null" v-bind:loading="loading"/>
+		<Welcome v-bind:loading="loading" v-show="page === null"/>
+		<Loader  v-bind:loading="loading" />
+		<Reader  v-bind:loading="loading" v-show="page !== null"/>
 	</div>
 </template>
 

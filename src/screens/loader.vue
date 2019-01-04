@@ -13,9 +13,10 @@ export default {
 <style scoped>
 .loader {
 	background: red;
-	display: none;
+	opacity: 0;
+	transition: opacity .2s linear;
 }
 [loading=true] {
-	display: block;
+	opacity: 1;
 }
 </style>
