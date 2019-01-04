@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "hyperapp": "~1.2.9"
+    "hyperapp": "~1.2.9",
+    "query-string": "~6.2.0"
   },
   "devDependencies": {
     "eslint-config-xo-preact": "~1.0.0",
@@ -26,10 +27,14 @@
     "semicolon": false,
     "extends": "xo-preact",
     "rules": {
-      "import/no-unassigned-import": ["error", {
-        "allow": [
-            "**/*.css", "hyperapp"
-          ]}
+      "import/no-unassigned-import": [
+        "error",
+        {
+          "allow": [
+            "**/*.css",
+            "hyperapp"
+          ]
+        }
       ],
       "generator-star-spacing": 0,
       "capitalized-comments": 0,
@@ -45,9 +50,18 @@
         "error",
         "prefer-single"
       ],
-      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ],
       "react/jsx-closing-bracket-location": [
-        1, "tag-aligned"
+        1,
+        "tag-aligned"
       ]
     }
   }
