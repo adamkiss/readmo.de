@@ -1,15 +1,15 @@
-<template>
-	<div class="debug reader" v-bind:class="{'is-loading': loading}">
-		Read
-	</div>
-</template>
-
 <script>
 export default {
 	name: 'Reader',
-	props: {}
+	data: () => ({ loading: false }),
 }
 </script>
+
+<template>
+	<div class="debug reader" v-bind:class="{'is-loading': loading}">
+		<span v-if="this.$parent.page" v-html="this.$parent.page.body"></span>
+	</div>
+</template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

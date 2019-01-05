@@ -1,12 +1,18 @@
 <template>
-	<div class="debug loader">
+	<div class="debug loader" v-on:click="setNotLoading">
 		Loading
 	</div>
 </template>
 
 <script>
 export default {
-	name: 'loader'
+	name: 'loader',
+	data: () => ({ loading: false }),
+	methods: {
+		setNotLoading: function() {
+			this.$parent.loading = false
+		}
+	}
 }
 </script>
 

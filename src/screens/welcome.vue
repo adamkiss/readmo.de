@@ -7,7 +7,7 @@
 <script>
 export default {
 	name: 'Welcome',
-	props: {}
+	data: () => ({ loading: false })
 }
 </script>
 
