@@ -4,14 +4,20 @@ export default {
 	data: () => ({
 		url: null,
 		loading: false
-	})
+	}),
+	methods: {
+		navigate() {
+			if (this.url)
+				this.$parent.navigate(this.url)
+		}
+	}
 }
 </script>
 
 <template>
 	<div class='welcome-state' v-bind:class="{'is-loading': loading}">
 		<input v-model='url' type='url' />
-		<button @click="this.$parent.navigate(this.url)">Readmo.de this</button>
+		<button @click="navigate">Readmo.de this</button>
 		<hr>
 		<button>Paste from clipboard</button>
 	</div>

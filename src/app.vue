@@ -30,12 +30,20 @@ export default {
 				return null
 			}
 		},
+		navigateToWelcome: function() {
+			this.setState('loading')
+
+			this.url = null
+			this.page = null
+
+			this.setState('welcome')
+		},
 		navigate: async function(url) {
 			this.setState('loading')
 
 			try {
 				const page = await this.loadUrl(url)
-				this.page = page.data.page
+				this.page = page
 				this.url = url
 			} catch (err) {
 				console.error(err) // eslint-disable-line
