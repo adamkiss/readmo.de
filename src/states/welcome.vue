@@ -1,4 +1,6 @@
 <script>
+import isUrl from 'is-url'
+
 export default {
 	name: 'WelcomeState',
 	data: () => ({
@@ -6,9 +8,14 @@ export default {
 		loading: false
 	}),
 	methods: {
+		shakeInput() {
+
+		},
 		navigate() {
-			if (this.url)
+			if (this.url && isUrl(this.url))
 				this.$parent.navigate(this.url)
+			else
+				this.shakeInput()
 		}
 	}
 }
@@ -19,7 +26,7 @@ export default {
 		<input v-model='url' type='url' />
 		<button @click="navigate">Readmo.de this</button>
 		<hr>
-		<button>Paste from clipboard</button>
+		<button>Paste from clipboard and go (@todo)</button>
 	</div>
 </template>
 
