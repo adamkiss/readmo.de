@@ -1,6 +1,6 @@
 <script>
 export default {
-	name: 'Reader',
+	name: 'ReadingState',
 	data: () => ({ loading: false }),
 }
 </script>

@@ -1,15 +1,15 @@
+<script>
+export default {
+	name: 'WelcomeState',
+	data: () => ({ loading: false })
+}
+</script>
+
 <template>
 	<div class='debug welcome' v-bind:class="{'is-loading': loading}">
 		Welcome
 	</div>
 </template>
-
-<script>
-export default {
-	name: 'Welcome',
-	data: () => ({ loading: false })
-}
-</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

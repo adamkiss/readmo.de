@@ -1,17 +1,20 @@
 <script>
 // @todo lazy loading components: "async components"
-import Welcome from './screens/welcome.vue'
-import Loader from './screens/loader.vue'
-import Reader from './screens/reader.vue'
+import WelcomeState from './states/welcome.vue'
+import LoadingState from './states/loading.vue'
+import ReadingState from './states/reading.vue'
 import axios from 'axios'
 
 export default {
 	name: 'app',
 	data: () => ({
-		loading: true,
+		state: 'loading',
 		page: null
 	}),
 	methods: {
+		setState(newState) {
+			this.state = newState
+		},
 		getUrl: function() {
 			return `${window.location.pathname}${window.location.search}`.substring(1)
 		},
@@ -25,11 +28,11 @@ export default {
 			}
 		},
 		navigate: async function(url) {
-			this.loading = true
+			this.setState('loading')
 
 			this.page = await this.loadUrl(url)
 
-			this.loading = false
+			this.setState('reading')
 		}
 	},
 	mounted: async function() {
@@ -37,19 +40,26 @@ export default {
 		if (url)
 			this.page = await this.loadUrl(url)
 
-		this.loading = false
+		this.setState(url ? 'reading' : 'welcome')
 	},
 	components: {
-		Welcome, Loader, Reader
+		LoadingState, WelcomeState, ReadingState
 	}
 }
 </script>
 
 <template>
 	<div id="app">
-		<Welcome v-bind:loading="loading" v-show="page === null"/>
-		<Loader  v-bind:loading="loading" />
-		<Reader  v-bind:loading="loading" v-show="page !== null" v-bind="page"/>
+		<welcome-state v-show="state === 'welcome'"
+			:loading="state === 'loading'"
+		/>
+		<loading-state
+			:loading="state === 'loading'"
+		/>
+		<reading-state v-show="state === 'reading'"
+			:loading="state === 'loading'"
+			:page="page"
+		/>
 	</div>
 </template>
 
