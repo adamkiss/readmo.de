@@ -12,16 +12,25 @@ export default {
 </script>
 
 <template>
-	<div class="debug loader" v-on:click="setNotLoading">
-		Loading
+	<div class="loading-state" v-on:click="setNotLoading">
+		<span class="loader">Loading</span>
 	</div>
 </template>
 
 <style scoped>
+.loading-state {
+	position: fixed;
+	z-index: 10;
+	left: 0; right: 0;
+	top: 0; bottom: 0;
+	background: rgba(255, 0, 0, .2);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 .loader {
-	background: red;
-	opacity: 0;
-	transition: opacity .2s linear;
+	/* @todo */
 }
 [loading=true] {
 	opacity: 1;

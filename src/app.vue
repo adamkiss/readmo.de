@@ -9,6 +9,7 @@ export default {
 	name: 'app',
 	data: () => ({
 		state: 'loading',
+		url: null,
 		page: null
 	}),
 	methods: {
@@ -16,7 +17,8 @@ export default {
 			this.state = newState
 		},
 		getUrl: function() {
-			return `${window.location.pathname}${window.location.search}`.substring(1)
+			const {pathname, search} = window.location
+			return `${pathname}${search}`.substring(1)
 		},
 		loadUrl: async function(url) {
 			try {
@@ -24,23 +26,33 @@ export default {
 				return page.data.page
 			} catch (err) {
 				console.error(err) // eslint-disable-line
+				this.setState('error')
 				return null
 			}
 		},
 		navigate: async function(url) {
 			this.setState('loading')
 
-			this.page = await this.loadUrl(url)
+			try {
+				const page = await this.loadUrl(url)
+				this.page = page.data.page
+				this.url = url
+			} catch (err) {
+				console.error(err) // eslint-disable-line
+				this.setState('error')
+				return null
+			}
 
 			this.setState('reading')
 		}
 	},
 	mounted: async function() {
-		const url = this.getUrl()
-		if (url)
-			this.page = await this.loadUrl(url)
+		this.url = this.getUrl()
 
-		this.setState(url ? 'reading' : 'welcome')
+		if (this.url)
+			this.page = await this.loadUrl(this.url)
+
+		this.setState(this.url ? 'reading' : 'welcome')
 	},
 	components: {
 		LoadingState, WelcomeState, ReadingState
@@ -53,7 +65,7 @@ export default {
 		<welcome-state v-show="state === 'welcome'"
 			:loading="state === 'loading'"
 		/>
-		<loading-state
+		<loading-state v-show="state === 'loading'"
 			:loading="state === 'loading'"
 		/>
 		<reading-state v-show="state === 'reading'"
@@ -70,12 +82,6 @@ export default {
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: #2c3e50;
-	margin-top: 60px;
-}
-
-.debug {
-	width: 100px;
-	height: 100px;
 }
 
 .is-loading {

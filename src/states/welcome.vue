@@ -1,20 +1,26 @@
 <script>
 export default {
 	name: 'WelcomeState',
-	data: () => ({ loading: false })
+	data: () => ({
+		url: null,
+		loading: false
+	})
 }
 </script>
 
 <template>
-	<div class='debug welcome' v-bind:class="{'is-loading': loading}">
-		Welcome
+	<div class='welcome-state' v-bind:class="{'is-loading': loading}">
+		<input v-model='url' type='url' />
+		<button @click="this.$parent.navigate(this.url)">Readmo.de this</button>
+		<hr>
+		<button>Paste from clipboard</button>
 	</div>
 </template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.welcome {
-	background-color: #42b983;
+.welcome-state {
+	min-height: 100vh;
 }
 h3 {
 	margin: 40px 0 0;
