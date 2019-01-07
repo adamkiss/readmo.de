@@ -39,7 +39,6 @@ export default {
 		setError(err) {
 			this.setState('error')
 			this.error = err
-
 			return null
 		},
 		getUrl: function() {
@@ -48,10 +47,11 @@ export default {
 		},
 		loadUrl: async function(url) {
 			try {
+				// throw new Error("This is wrong!")
 				const page = await axios.post(`http://lapi.readmo.de.localhost/`, {url})
 				return page.data.page
 			} catch (err) {
-				return this.setError(err)
+				throw err
 			}
 		},
 		navigateToWelcome: function() {
@@ -70,6 +70,7 @@ export default {
 				this.page = page
 				this.url = url
 			} catch (err) {
+				console.error(err)
 				return this.setError(err)
 			}
 

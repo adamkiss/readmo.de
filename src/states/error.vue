@@ -1,16 +1,18 @@
 <script>
 export default {
 	name: 'ErrorState',
-	data: () => ({
-		error: null
-	})
+	methods: {
+		getError() {
+			return this.$parent.error
+		}
+	}
 }
 </script>
 
 <template>
 	<div class="error-state">
 		<h1>Error</h1>
-		<p>{{ error.message }}</p>
+		<pre>{{ this.getError().message }}</pre>
 	</div>
 </template>
 
