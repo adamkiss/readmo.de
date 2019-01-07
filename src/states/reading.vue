@@ -1,3 +1,11 @@
+<template>
+	<div class="reading-state" v-bind:class="{'is-loading': loading}">
+		<button @click="navigateToWelcome">Back to Welcome page</button>
+		<h1 v-if="this.$parent.page">{{ this.$parent.page.title }}</h1>
+		<span v-if="this.$parent.page" v-html="this.$parent.page.body"></span>
+	</div>
+</template>
+
 <script>
 export default {
 	name: 'ReadingState',
@@ -9,14 +17,6 @@ export default {
 	}
 }
 </script>
-
-<template>
-	<div class="reading-state" v-bind:class="{'is-loading': loading}">
-		<button @click="navigateToWelcome">Back to Welcome page</button>
-		<h1 v-if="this.$parent.page">{{ this.$parent.page.title }}</h1>
-		<span v-if="this.$parent.page" v-html="this.$parent.page.body"></span>
-	</div>
-</template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

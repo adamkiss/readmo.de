@@ -1,3 +1,9 @@
+<template>
+	<div class="loading-state" v-on:click="setNotLoading">
+		<span class="loader">Loading</span>
+	</div>
+</template>
+
 <script>
 export default {
 	name: 'LoadingState',
@@ -10,12 +16,6 @@ export default {
 	}
 }
 </script>
-
-<template>
-	<div class="loading-state" v-on:click="setNotLoading">
-		<span class="loader">Loading</span>
-	</div>
-</template>
 
 <style scoped>
 .loading-state {

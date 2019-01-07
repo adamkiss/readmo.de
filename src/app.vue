@@ -1,3 +1,21 @@
+<template>
+	<div id="app">
+		<welcome-state v-show="state === 'welcome'"
+			:loading="state === 'loading'"
+		/>
+		<loading-state v-show="state === 'loading'"
+			:loading="state === 'loading'"
+		/>
+		<error-state v-show="state === 'error'"
+			:error="error"
+		/>
+		<reading-state v-show="state === 'reading'"
+			:loading="state === 'loading'"
+			:page="page"
+		/>
+	</div>
+</template>
+
 <script>
 // @todo lazy loading components: "async components"
 import LoadingState from './states/loading.vue'
@@ -71,24 +89,6 @@ export default {
 	}
 }
 </script>
-
-<template>
-	<div id="app">
-		<welcome-state v-show="state === 'welcome'"
-			:loading="state === 'loading'"
-		/>
-		<loading-state v-show="state === 'loading'"
-			:loading="state === 'loading'"
-		/>
-		<error-state v-show="state === 'error'"
-			:error="error"
-		/>
-		<reading-state v-show="state === 'reading'"
-			:loading="state === 'loading'"
-			:page="page"
-		/>
-	</div>
-</template>
 
 <style>
 #app {

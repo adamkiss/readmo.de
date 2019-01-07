@@ -1,3 +1,12 @@
+<template>
+	<div class='welcome-state' v-bind:class="{'is-loading': loading}">
+		<input v-model='url' type='url' />
+		<button @click="navigate">Readmo.de this</button>
+		<hr>
+		<button>Paste from clipboard and go (@todo)</button>
+	</div>
+</template>
+
 <script>
 import isUrl from 'is-url'
 
@@ -20,15 +29,6 @@ export default {
 	}
 }
 </script>
-
-<template>
-	<div class='welcome-state' v-bind:class="{'is-loading': loading}">
-		<input v-model='url' type='url' />
-		<button @click="navigate">Readmo.de this</button>
-		<hr>
-		<button>Paste from clipboard and go (@todo)</button>
-	</div>
-</template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
