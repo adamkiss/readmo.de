@@ -1,7 +1,8 @@
 <script>
 // @todo lazy loading components: "async components"
-import WelcomeState from './states/welcome.vue'
 import LoadingState from './states/loading.vue'
+import ErrorState from './states/error.vue'
+import WelcomeState from './states/welcome.vue'
 import ReadingState from './states/reading.vue'
 import axios from 'axios'
 
@@ -10,11 +11,18 @@ export default {
 	data: () => ({
 		state: 'loading',
 		url: null,
-		page: null
+		page: null,
+		error: null
 	}),
 	methods: {
 		setState(newState) {
 			this.state = newState
+		},
+		setError(err) {
+			this.setState('error')
+			this.error = err
+
+			return null
 		},
 		getUrl: function() {
 			const {pathname, search} = window.location
@@ -25,9 +33,7 @@ export default {
 				const page = await axios.post(`http://lapi.readmo.de.localhost/`, {url})
 				return page.data.page
 			} catch (err) {
-				console.error(err) // eslint-disable-line
-				this.setState('error')
-				return null
+				return this.setError(err)
 			}
 		},
 		navigateToWelcome: function() {
@@ -46,9 +52,7 @@ export default {
 				this.page = page
 				this.url = url
 			} catch (err) {
-				console.error(err) // eslint-disable-line
-				this.setState('error')
-				return null
+				return this.setError(err)
 			}
 
 			this.setState('reading')
@@ -63,7 +67,7 @@ export default {
 		this.setState(this.url ? 'reading' : 'welcome')
 	},
 	components: {
-		LoadingState, WelcomeState, ReadingState
+		LoadingState, ErrorState, WelcomeState, ReadingState
 	}
 }
 </script>
@@ -75,6 +79,9 @@ export default {
 		/>
 		<loading-state v-show="state === 'loading'"
 			:loading="state === 'loading'"
+		/>
+		<error-state v-show="state === 'error'"
+			:error="error"
 		/>
 		<reading-state v-show="state === 'reading'"
 			:loading="state === 'loading'"
