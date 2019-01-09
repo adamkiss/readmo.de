@@ -2,6 +2,10 @@
 
 import axios from 'axios'
 
+const apiUrl = process.env.NODE_ENV === 'development' ?
+	'http://lapi.readmo.de.localhost/' :
+	'https://api.readmo.de/'
+
 const state = {
 	url: null,
 	pages: {}
@@ -25,7 +29,7 @@ const mutations = {
 const actions = {
 	async loadPage({commit, dispatch}, {url}) {
 		try {
-			const {data: {page}} = await axios.post('http://lapi.readmo.de.localhost/', {url})
+			const {data: {page}} = await axios.post(apiUrl, {url})
 			commit('addPage', {url, page})
 			commit('setUrl', {url})
 		} catch (error) {
