@@ -1,20 +1,18 @@
 <template>
-	<div class="reading-state" v-bind:class="{'is-loading': loading}">
+	<div class="reading-state" v-bind:class="{'is-loading': is('loading')}" v-if="currentPage">
 		<button @click="navigateToWelcome">Back to Welcome page</button>
-		<h1 v-if="this.$parent.page">{{ this.$parent.page.title }}</h1>
-		<span v-if="this.$parent.page" v-html="this.$parent.page.body"></span>
+		<h1>{{ currentPage.title }}</h1>
+		<span v-html="currentPage.body"></span>
 	</div>
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex'
+
 export default {
 	name: 'ReadingState',
-	data: () => ({ loading: false }),
-	methods: {
-		navigateToWelcome() {
-			this.$parent.navigateToWelcome()
-		}
-	}
+	computed: mapGetters(['is', 'currentPage']),
+	methods: mapActions(['navigateToWelcome'])
 }
 </script>
 

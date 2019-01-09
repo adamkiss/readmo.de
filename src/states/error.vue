@@ -1,20 +1,18 @@
-<script>
-export default {
-	name: 'ErrorState',
-	methods: {
-		getError() {
-			return this.$parent.error
-		}
-	}
-}
-</script>
-
 <template>
-	<div class="error-state">
+	<div class="error-state" v-if="hasError">
 		<h1>Error</h1>
-		<pre>{{ this.getError().message }}</pre>
+		<pre>{{ getError('message') }}</pre>
 	</div>
 </template>
+
+<script>
+import {mapGetters} from 'vuex'
+
+export default {
+	name: 'ErrorState',
+	computed: mapGetters(['hasError', 'getError'])
+}
+</script>
 
 <style scoped>
 .error-state {

@@ -1,5 +1,5 @@
 <template>
-	<div class='welcome-state' v-bind:class="{'is-loading': loading}">
+	<div class='welcome-state' v-bind:class="{'is-loading': is('loading')}">
 		<input v-model='url' type='url' />
 		<button @click="navigate">Readmo.de this</button>
 		<hr>
@@ -8,21 +8,24 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 import isUrl from 'is-url'
 
 export default {
 	name: 'WelcomeState',
 	data: () => ({
-		url: null,
-		loading: false
+		url: null
 	}),
+	computed: {
+		...mapGetters(['is'])
+	},
 	methods: {
 		shakeInput() {
 
 		},
 		navigate() {
 			if (this.url && isUrl(this.url))
-				this.$parent.navigate(this.url)
+				this.$store.dispatch('navigate', {url: this.url})
 			else
 				this.shakeInput()
 		}
