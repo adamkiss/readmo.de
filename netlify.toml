@@ -1,6 +1,9 @@
 [Settings]
 ID = 'readmo.de'
 
+[build]
+command = 'npm run build'
+
 # Redirect default Netlify subdomain to primary domain
 [[redirects]]
 from="/*"

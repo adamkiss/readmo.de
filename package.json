@@ -2,6 +2,9 @@
   "name": "readmo.de",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "build": "echo 'This is a dud. Have a nice day.'"
+  },
   "dependencies": {},
   "devDependencies": { }
 }
