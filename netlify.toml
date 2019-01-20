@@ -1,16 +1,8 @@
 [Settings]
 ID = 'readmo.de'
 
-[build]
-command = 'npm run build'
-publish = 'dist'
-
 # Redirect default Netlify subdomain to primary domain
 [[redirects]]
 from="/*"
 to="https://readermo.de/:splat"
-
-# [[redirects]]
-# from="https://bestshot.netlify.com/*"
-# to="https://bestshot.sk/:splat"
-# status=301
+status=301
