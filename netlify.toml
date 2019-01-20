@@ -8,8 +8,7 @@ publish = 'dist'
 # Redirect default Netlify subdomain to primary domain
 [[redirects]]
 from="/*"
-to="index.html"
-status=200
+to="https://readermo.de/:splat"
 
 # [[redirects]]
 # from="https://bestshot.netlify.com/*"
